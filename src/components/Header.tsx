@@ -7,7 +7,7 @@ import { useClose } from "../hooks/useClose";
 import { size } from "../ui/AdaptiveSize";
 // import ChangeLanguage from "./ChangeLanguage";
 import GoogleAuthButton from "./GoogleAuthButton";
-import MenuOpening from "./MenuOpening";
+// import MenuOpening from "./MenuOpening";
 // import Wallet from "./Wallet";
 
 const FixedHeader = styled.header`
