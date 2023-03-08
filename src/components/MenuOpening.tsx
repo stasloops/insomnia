@@ -2,7 +2,6 @@ import { Menu } from "antd";
 import React, { FC, useContext, useEffect, useState } from "react";
 import {
   ApiOutlined,
-  DesktopOutlined,
   ExperimentOutlined,
   FileImageOutlined,
   GifOutlined,
@@ -17,10 +16,9 @@ import type { MenuProps } from "antd";
 import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../App";
-import Popup from "./Popup";
+// import Popup from "./Popup";
 import { storage } from "../helpers/localStorage";
 import { useTranslation } from "react-i18next";
-import { identity } from "lodash";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -129,9 +127,9 @@ const MenuOpening: FC<Props> = ({ menuIsOpen, setMenuIsOpen, menuRef }) => {
         menuIsOpen ? { bottom: `calc(-100vh - -70px)` } : { bottom: "0px" }
       }
     >
-      {popupIsActive && !userData?.isAuth ? (
+      {/* {popupIsActive && !userData?.isAuth ? (
         <Popup call={setPopupIsActive} />
-      ) : null}
+      ) : null} */}
       <MenuGroup
         style={menuIsOpen ? { display: "block" } : { display: "none" }}
         selectedKeys={[activeItem]}
