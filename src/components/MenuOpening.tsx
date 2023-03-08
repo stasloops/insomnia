@@ -57,6 +57,9 @@ interface Props {
   setMenuIsOpen: (item: boolean) => void;
 }
 const MenuOpening: FC<Props> = ({ menuIsOpen, setMenuIsOpen, menuRef }) => {
+  if (!menuIsOpen) {
+    return null;
+  }
   const userData = useContext(UserContext);
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -69,7 +72,7 @@ const MenuOpening: FC<Props> = ({ menuIsOpen, setMenuIsOpen, menuRef }) => {
     if (isRu === "ru") {
       i18n.changeLanguage("ru");
     }
-    
+
     const path = pathname.split("/")[1];
     if (path === "wait") {
       return;
