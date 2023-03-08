@@ -5,10 +5,10 @@ import { UserContext } from "../App";
 import { storage } from "../helpers/localStorage";
 import { useClose } from "../hooks/useClose";
 import { size } from "../ui/AdaptiveSize";
-// import ChangeLanguage from "./ChangeLanguage";
+import ChangeLanguage from "./ChangeLanguage";
 import GoogleAuthButton from "./GoogleAuthButton";
 import MenuOpening from "./MenuOpening";
-// import Wallet from "./Wallet";
+import Wallet from "./Wallet";
 
 const FixedHeader = styled.header`
   position: relative;
@@ -104,11 +104,11 @@ const Header = () => {
             <BurgerMenuLine />
           </BurgerMenu>
           {/* {menuIsOpen ? ( */}
-            <MenuOpening
-              setMenuIsOpen={setMenuIsOpen}
-              menuIsOpen={menuIsOpen}
-              menuRef={menuRef}
-            />
+          <MenuOpening
+            setMenuIsOpen={setMenuIsOpen}
+            menuIsOpen={menuIsOpen}
+            menuRef={menuRef}
+          />
           {/* ) : null} */}
           <Link to={"/"}>
             <Logo>
@@ -118,9 +118,8 @@ const Header = () => {
           </Link>
         </LeftContent>
         <RightContent>
-          {/* <ChangeLanguage /> */}
-          {userData?.isAuth ? null : <GoogleAuthButton />}
-          {/* <Wallet /> */}
+          <ChangeLanguage />
+          {userData?.isAuth ? <Wallet /> : <GoogleAuthButton />}
         </RightContent>
       </Container>
     </FixedHeader>
