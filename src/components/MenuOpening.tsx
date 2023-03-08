@@ -16,7 +16,7 @@ import type { MenuProps } from "antd";
 import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../App";
-// import Popup from "./Popup";
+import Popup from "./Popup";
 import { storage } from "../helpers/localStorage";
 import { useTranslation } from "react-i18next";
 
@@ -61,7 +61,7 @@ const MenuOpening: FC<Props> = ({ menuIsOpen, setMenuIsOpen, menuRef }) => {
     return null;
   }
   const [internalMenuIsOpen, setInternalMenuIsOpen] = useState(false);
-  
+
   useEffect(() => {
     setInternalMenuIsOpen(true);
   }, [menuIsOpen]);
@@ -139,9 +139,9 @@ const MenuOpening: FC<Props> = ({ menuIsOpen, setMenuIsOpen, menuRef }) => {
           : { bottom: "0px" }
       }
     >
-      {/* {popupIsActive && !userData?.isAuth ? (
+      {popupIsActive && !userData?.isAuth ? (
         <Popup call={setPopupIsActive} />
-      ) : null} */}
+      ) : null}
       <MenuGroup
         style={internalMenuIsOpen ? { display: "block" } : { display: "none" }}
         selectedKeys={[activeItem]}
