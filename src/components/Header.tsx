@@ -6,7 +6,7 @@ import { storage } from "../helpers/localStorage";
 import { useClose } from "../hooks/useClose";
 import { size } from "../ui/AdaptiveSize";
 // import ChangeLanguage from "./ChangeLanguage";
-// import GoogleAuthButton from "./GoogleAuthButton";
+import GoogleAuthButton from "./GoogleAuthButton";
 // import MenuOpening from "./MenuOpening";
 // import Wallet from "./Wallet";
 
@@ -116,8 +116,9 @@ const Header = () => {
           </Link>
         </LeftContent>
         <RightContent>
-          {/* <ChangeLanguage />
-          {userData?.isAuth ? <Wallet /> : <GoogleAuthButton />} */}
+          {/* <ChangeLanguage /> */}
+          {userData?.isAuth ? null : <GoogleAuthButton />}
+          {/* <Wallet /> */}
         </RightContent>
       </Container>
     </FixedHeader>

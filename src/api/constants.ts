@@ -1,0 +1,1 @@
+export const API_URL = 'https://gateway.insomnia.land/api/v1';
