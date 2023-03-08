@@ -1,0 +1,16 @@
+{
+  "login_button": "Log in",
+
+  "text2image_title": "AI Image Generator",
+  "text2image_description": "Describe everything you want to see in the image and let the AI draw it. You can type something like cat in the space, polaroid photo. For the best output please use the advanced options or other generators. Read FAQ for more details.",
+  "text2image_placeholder": "cat in the space, polaroid photo",
+  "text2image_button": "Generate",
+  "text2image_model": "Model",
+  "text2image_sampler": "Sampler",
+  "text2image_seed": "Seed",
+  "text2image_size": "Size",
+  "text2image_options": "Advanced options",
+  "text2image_steps": "Steps",
+  "text2image_scale": "Scale",
+  "text2image_negative": "Negative words"
+}
