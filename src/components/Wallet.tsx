@@ -2,9 +2,14 @@ import { Button } from "antd";
 import React from "react";
 import Web3 from "web3";
 
+interface Window {
+  ethereum: any;
+}
+
 const Wallet = () => {
   let selectedAccount;
-  let provider = window.ethereum;
+  const windowA: any = window;
+  let provider = windowA.ethereum;
 
   const connect = async () => {
     if (typeof provider !== "undefined") {
