@@ -119,7 +119,8 @@ const Header = () => {
         </LeftContent>
         <RightContent>
           {/* <ChangeLanguage /> */}
-          {userData?.isAuth ? <Wallet /> : <GoogleAuthButton />}
+          {userData?.isAuth ? null : <GoogleAuthButton />}
+          {/* <Wallet /> */}
         </RightContent>
       </Container>
     </FixedHeader>
