@@ -103,12 +103,14 @@ const Header = () => {
             <BurgerMenuLine />
             <BurgerMenuLine />
           </BurgerMenu>
-          <MenuOpening
-            setMenuIsOpen={setMenuIsOpen}
-            menuIsOpen={menuIsOpen}
-            menuRef={menuRef}
-          />
-          <Link to={'/'}>
+          {menuIsOpen ? (
+            <MenuOpening
+              setMenuIsOpen={setMenuIsOpen}
+              menuIsOpen={menuIsOpen}
+              menuRef={menuRef}
+            />
+          ) : null}
+          <Link to={"/"}>
             <Logo>
               Insomnia AI
               {/* AIImage Generator */}
