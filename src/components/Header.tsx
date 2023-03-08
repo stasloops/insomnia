@@ -8,7 +8,7 @@ import { size } from "../ui/AdaptiveSize";
 import ChangeLanguage from "./ChangeLanguage";
 import GoogleAuthButton from "./GoogleAuthButton";
 import MenuOpening from "./MenuOpening";
-import Wallet from "./Wallet";
+// import Wallet from "./Wallet";
 
 const FixedHeader = styled.header`
   position: relative;
@@ -118,7 +118,7 @@ const Header = () => {
           </Link>
         </LeftContent>
         <RightContent>
-          {/* <ChangeLanguage /> */}
+          <ChangeLanguage />
           {userData?.isAuth ? null : <GoogleAuthButton />}
           {/* <Wallet /> */}
         </RightContent>
