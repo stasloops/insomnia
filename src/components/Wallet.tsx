@@ -2,10 +2,6 @@ import { Button } from "antd";
 import React from "react";
 import Web3 from "web3";
 
-interface Window {
-  ethereum: any;
-}
-
 const Wallet = () => {
   let selectedAccount;
   const windowA: any = window;
