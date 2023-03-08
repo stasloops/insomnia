@@ -60,9 +60,16 @@ const MenuOpening: FC<Props> = ({ menuIsOpen, setMenuIsOpen, menuRef }) => {
   if (!menuIsOpen) {
     return null;
   }
+  const [internalMenuIsOpen, setInternalMenuIsOpen] = useState(false);
+  
+  useEffect(() => {
+    setInternalMenuIsOpen(true);
+  }, [menuIsOpen]);
+
   const userData = useContext(UserContext);
   const navigate = useNavigate();
   const { pathname } = useLocation();
+
   const [popupIsActive, setPopupIsActive] = useState(false);
   const [activeItem, setActiveItem] = useState("");
   const { i18n } = useTranslation();
@@ -85,8 +92,8 @@ const MenuOpening: FC<Props> = ({ menuIsOpen, setMenuIsOpen, menuRef }) => {
     getItem("text2image", "image", <span></span>),
     getItem("image2image", "image2image", <span></span>),
     getItem("data2model", "model", <span></span>),
-    getItem("text2video", "wait/:1", <span></span>),
-    getItem("text2music", "wait/:2", <span></span>),
+    getItem("text2video", "wait/1", <span></span>),
+    getItem("text2music", "wait/2", <span></span>),
     getItem("task2content", "content", <span></span>),
     getItem("chatbot", "chatbot", <span></span>),
     getItem("laboratory", "control", <span></span>),
@@ -127,14 +134,16 @@ const MenuOpening: FC<Props> = ({ menuIsOpen, setMenuIsOpen, menuRef }) => {
     <ContainerMenu
       ref={menuRef}
       style={
-        menuIsOpen ? { bottom: `calc(-100vh - -70px)` } : { bottom: "0px" }
+        internalMenuIsOpen
+          ? { bottom: `calc(-100vh - -70px)` }
+          : { bottom: "0px" }
       }
     >
       {/* {popupIsActive && !userData?.isAuth ? (
         <Popup call={setPopupIsActive} />
       ) : null} */}
       <MenuGroup
-        style={menuIsOpen ? { display: "block" } : { display: "none" }}
+        style={internalMenuIsOpen ? { display: "block" } : { display: "none" }}
         selectedKeys={[activeItem]}
         theme="dark"
         onClick={nav}
