@@ -11,3 +11,18 @@ $request.interceptors.request.use((config: any) => {
 
 	return config;
 });
+
+$request.interceptors.response.use((config) => {
+    return config;
+},async (error) => {
+    const originalRequest = error.config;
+    if (error.response.status == 401 && error.config && !error.config._isRetry) {
+        originalRequest._isRetry = true;
+        try {
+			storage.remove("token");
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    throw error;
+})

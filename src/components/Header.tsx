@@ -1,8 +1,8 @@
+import { Button } from "antd";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { UserContext } from "../App";
-import { storage } from "../helpers/localStorage";
 import { useClose } from "../hooks/useClose";
 import { size } from "../ui/AdaptiveSize";
 import ChangeLanguage from "./ChangeLanguage";
@@ -103,24 +103,20 @@ const Header = () => {
             <BurgerMenuLine />
             <BurgerMenuLine />
           </BurgerMenu>
-          {/* {menuIsOpen ? ( */}
           <MenuOpening
             setMenuIsOpen={setMenuIsOpen}
             menuIsOpen={menuIsOpen}
             menuRef={menuRef}
           />
-          {/* ) : null} */}
-          <Link to={"/"}>
+          <Link to={'/'}>
             <Logo>
               Insomnia AI
-              {/* AIImage Generator */}
             </Logo>
           </Link>
         </LeftContent>
         <RightContent>
           <ChangeLanguage />
-          {userData?.isAuth ? null : <GoogleAuthButton />}
-          {/* <Wallet /> */}
+          {userData?.isAuth ? <Button>Wallet</Button> : <GoogleAuthButton />}
         </RightContent>
       </Container>
     </FixedHeader>

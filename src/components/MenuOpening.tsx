@@ -1,17 +1,18 @@
 import { Menu } from "antd";
 import React, { FC, useContext, useEffect, useState } from "react";
-// import {
-//   ApiOutlined,
-//   ExperimentOutlined,
-//   FileImageOutlined,
-//   GifOutlined,
-//   LogoutOutlined,
-//   PlusCircleOutlined,
-//   QuestionCircleOutlined,
-//   ShoppingOutlined,
-//   UnorderedListOutlined,
-//   UserOutlined,
-// } from "@ant-design/icons";
+import {
+  ApiOutlined,
+  DesktopOutlined,
+  ExperimentOutlined,
+  FileImageOutlined,
+  GifOutlined,
+  LogoutOutlined,
+  PlusCircleOutlined,
+  QuestionCircleOutlined,
+  ShoppingOutlined,
+  UnorderedListOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -19,6 +20,7 @@ import { UserContext } from "../App";
 import Popup from "./Popup";
 import { storage } from "../helpers/localStorage";
 import { useTranslation } from "react-i18next";
+import { identity } from "lodash";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -60,8 +62,8 @@ const MenuOpening: FC<Props> = ({ menuIsOpen, setMenuIsOpen, menuRef }) => {
   if (!menuIsOpen) {
     return null;
   }
-  const [internalMenuIsOpen, setInternalMenuIsOpen] = useState(false);
 
+  const [internalMenuIsOpen, setInternalMenuIsOpen] = useState(false);
   useEffect(() => {
     setInternalMenuIsOpen(true);
   }, [menuIsOpen]);
@@ -69,7 +71,6 @@ const MenuOpening: FC<Props> = ({ menuIsOpen, setMenuIsOpen, menuRef }) => {
   const userData = useContext(UserContext);
   const navigate = useNavigate();
   const { pathname } = useLocation();
-
   const [popupIsActive, setPopupIsActive] = useState(false);
   const [activeItem, setActiveItem] = useState("");
   const { i18n } = useTranslation();
@@ -89,31 +90,34 @@ const MenuOpening: FC<Props> = ({ menuIsOpen, setMenuIsOpen, menuRef }) => {
   }, [pathname]);
 
   const items: MenuItem[] = [
-    getItem("text2image", "image", <span></span>),
-    getItem("image2image", "image2image", <span></span>),
-    getItem("data2model", "model", <span></span>),
-    getItem("text2video", "wait/1", <span></span>),
-    getItem("text2music", "wait/2", <span></span>),
-    getItem("task2content", "content", <span></span>),
-    getItem("chatbot", "chatbot", <span></span>),
-    getItem("laboratory", "control", <span></span>),
-    getItem("works", "works", <span></span>),
-    getItem("profile", "profile", <span></span>),
-    getItem("billing", "billing", <span></span>),
-    getItem("api", "api", <span></span>),
-    getItem("FAQ", "faq", <span></span>),
+    getItem("text2image", "image", <FileImageOutlined />),
+    getItem("image2image", "image2image", <FileImageOutlined />),
+    getItem("data2model", "model", <PlusCircleOutlined />),
+    getItem("text2video", "wait/:1", <GifOutlined />),
+    getItem("text2music", "wait/:2", <GifOutlined />),
+    getItem("task2content", "content", <FileImageOutlined />),
+    getItem("chatbot", "chatbot", <FileImageOutlined />),
+    getItem("laboratory", "control", <ExperimentOutlined />),
+    getItem("works", "works", <UnorderedListOutlined />),
+    getItem("profile", "profile", <UserOutlined />),
+    getItem("billing", "billing", <ShoppingOutlined />),
+    getItem("api", "api", <ApiOutlined />),
+    getItem("FAQ", "faq", <QuestionCircleOutlined />),
 
-    userData?.isAuth ? getItem("logout", "logout", <span></span>) : null,
+    userData?.isAuth ? getItem("logout", "logout", <LogoutOutlined />) : null,
   ];
 
   const nav: MenuProps["onClick"] = (e) => {
     setMenuIsOpen(false);
 
     if (!userData?.isAuth && e.key === "works") {
-      return setPopupIsActive(true);
+      console.log("re");
+      setPopupIsActive(true);
+      return;
     }
     if (!userData?.isAuth && e.key === "profile") {
-      return setPopupIsActive(true);
+      setPopupIsActive(true);
+      return;
     }
 
     if (e.key === "logout") {
@@ -129,6 +133,8 @@ const MenuOpening: FC<Props> = ({ menuIsOpen, setMenuIsOpen, menuRef }) => {
 
     navigate(`/${e.key}`);
   };
+
+  console.log(popupIsActive);
 
   return (
     <ContainerMenu

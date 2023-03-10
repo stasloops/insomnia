@@ -1,0 +1,21 @@
+.ant-upload {
+    width: 100%;
+    position: relative;
+}
+
+.avatar-uploader {
+
+}
+
+:where(.css-dev-only-do-not-override-1km3mtt).ant-upload-wrapper.ant-upload-picture-card-wrapper .ant-upload.ant-upload-select {
+    width: 50%;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+:where(.css-dev-only-do-not-override-1km3mtt).ant-upload-wrapper.ant-upload-picture-card-wrapper .ant-upload.ant-upload-select {
+    height: auto;
+}

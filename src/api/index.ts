@@ -24,6 +24,7 @@ export const makeGenerationRequest = async (
 
 export const getImageUrl = async (id: string): Promise<string> => {
   const res = await $request.get(`/generate/download/${id}`);
+  console.log(res.data.image_url);
   
   return res.data.image_url;
 };
